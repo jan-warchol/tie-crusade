@@ -1,0 +1,1 @@
+track all possible parameters (from tie details, see Karol's testing files) and locate where in the code they're used.  I suppose that all this happens insidde tie-formatting-problem.cc, but maybe somewhere else.
