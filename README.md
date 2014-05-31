@@ -1,6 +1,7 @@
 
 ENGLISH
 =======
+
 I plan to significantly change/rewrite LilyPond tie formatting code.  This folder contains my notes and research that i've collected over many months of thinking.
 Firstly, look at LilyPond's current problems in "demonstration.pdf".
 You may take a look at "old examinations" to see a few suggested tie shapes.
@@ -10,8 +11,10 @@ See my thoughts on the correct way of formatting ties in "specification.txt"
 Technical explanation: tie shape in LilyPond depends heavily on the distance between tied notes.  Because of that, if you extract a piece of input leading to a bad tie, it may look completely different when compiled separately - take a look at "real-life examples/bad ties/bad-tie-4.png": if you compile just { a'~( a g'16) } the tie will look correctly.
 It wouldn't make sense to copy a long piece of input just to recreate the context leading to a bad-looking tie.  That's why in the testing files we use spacer rests, which allow us to simulate different distances between tied notes (tieWaitForNote causes the tie to connect two notes even if there are spacer rests between them).  Using spacer rests is equivalent to having differently spaced notes.
 
+
 POLSKI
 ======
+
 Planuję znacząco poprawić (a może nawet napisać od nowa) kod zajmujący się łukami przedłużającymi w LilyPondzie (ties).  W tym folderze są zebrane moje materiały.
 Najpierw rzuć okiem na przykłady obecnych problemów w "demonstration.pdf".
 Możesz zajrzeć do "old examinations" żeby zobaczyć kilka proponowanych rozwiązań.
