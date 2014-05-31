@@ -42,3 +42,11 @@ które pozwalają symulować różne odległości między łączonymi nutami (pa
 tieWaitForNote powoduje, że nuta zostanie połączona łukiem z następną nutą,
 nawet jeśli pomiędzy nimi jest pusta pauza).  Nuty oddzielone pustymi pauzami
 dają taki sam efekt jak normalne nuty "rozciągnięte" przez inne okoliczności.
+
+
+What needs to be done:
+======================
+
+All tie cases from real-life examples should be encoded in lilypond form
+
+All tie parameters should be documented
