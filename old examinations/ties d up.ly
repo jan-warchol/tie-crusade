@@ -14,7 +14,7 @@ br = { \bar "" \break }
 \layout { \context { \Voice \override Tie #'direction = #UP } }
 
 \transpose d d
-\new Staff \with { \override StaffSymbol #'line-count = #5 \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
+\new Staff \with { \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
 
     \mark "3/4"
     d'4*3/4 ~ d'4

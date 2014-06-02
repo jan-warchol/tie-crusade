@@ -10,7 +10,7 @@ br = { \bar "" \break }
 
 \transpose d g
 
-\new Staff \with { \override StaffSymbol #'line-count = #5 \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t \tieUp
+\new Staff \with { \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t \tieUp
     \mark "1/4"
     d'4*1/4 ~ d'4
     \bar "" 

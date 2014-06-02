@@ -8,7 +8,7 @@ br = { \bar "" \break }
 
 \layout { \context { \Voice \override Tie #'direction = #DOWN \override Stem #'direction = #UP } }
 
-\new Staff \with { \override StaffSymbol #'line-count = #5 \remove Time_signature_engraver \remove Accidental_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
+\new Staff \with { \remove Time_signature_engraver \remove Accidental_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
     
     \br
     \mark "1/4"

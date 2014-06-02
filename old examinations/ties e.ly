@@ -12,7 +12,7 @@ br = { \bar "" \break }
 \markup "and short e-ties have their own behaviour."
 
 \transpose d e
-\new Staff \with { \override StaffSymbol #'line-count = #5 \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
+\new Staff \with { \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
     \mark "1/4"
     d'4*1/4 ~ d'4
     \bar "" 

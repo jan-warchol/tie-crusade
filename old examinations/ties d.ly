@@ -8,7 +8,7 @@ br = { \bar "" \break }
 % black_notehead_width = 1,316178
 
 \transpose d d
-\new Staff \with { \override StaffSymbol #'line-count = #5 \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
+\new Staff \with { \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t 
     \mark "1/4"
     d'4*1/4 ~ d'4
     \bar "" 
