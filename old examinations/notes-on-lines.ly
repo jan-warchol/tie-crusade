@@ -141,3 +141,95 @@ br = { \bar "" \break }
     \br
     
   }
+
+
+
+\transpose d g
+
+\new Staff \with { \remove Time_signature_engraver } { \time 9999/1 \set tieWaitForNote = ##t \tieUp
+    \mark "1/4"
+    d'4*1/4 ~ d'4
+    \bar "" 
+    <<
+      {
+        \once \override Tie #'control-points = 
+        #'((1.5 . -0.42) (1.637 . -0.18) (2.015 . -0.18) (2.15 . -0.42))
+        d'4 ~ \hideNotes d' \unHideNotes
+      }
+      \new Voice { 
+        \once \override Stem #'extra-offset = #'(1.82 . 0)
+        \once \override NoteHead #'extra-offset = #'(1.82 . 0) 
+        d'4
+      }
+    >>
+    \br 
+    
+    \mark "1"
+    d'4 ~ d'4
+    \bar "" 
+    <<
+      {
+        \once \override Tie #'control-points = 
+        #'((1.554 . -0.55) (1.854 . -0.15) (2.639 . -0.15) (2.939 . -0.55))
+        d'4 ~ \hideNotes d' \unHideNotes
+      }
+      \new Voice { 
+        \once \override Stem #'extra-offset = #'(3.00 . 0)
+        \once \override NoteHead #'extra-offset = #'(3.00 . 0) 
+        d'4
+      }
+    >>
+    \br
+    
+    \mark "5/4"
+    d'4 ~ s16 d'4
+    \bar "" 
+    <<
+      {
+        \once \override Tie #'control-points = 
+        #'((1.554 . -0.6) (2.000 . -0.15) (3.174 . -0.15) (3.647 . -0.6))
+        d'4*5/4 ~ \hideNotes d' \unHideNotes
+      }
+      \new Voice { 
+        \once \override Stem #'extra-offset = #'(3.75 . 0)
+        \once \override NoteHead #'extra-offset = #'(3.75 . 0) 
+        d'4
+      }
+    >>
+    \br
+    
+    \mark "3/2"
+    d'4 ~ s8 d'4
+    \bar "" 
+    <<
+      {
+        \once \override Tie #'control-points = 
+        #'((1.554 . -0.6) (2.19 . -0.1) (3.759 . -0.1) (4.397 . -0.6))
+        d'4*3/2 ~ \hideNotes d' \unHideNotes
+      }
+      \new Voice { 
+        \once \override Stem #'extra-offset = #'(4.5 . 0)
+        \once \override NoteHead #'extra-offset = #'(4.5 . 0) 
+        d'4
+      }
+    >>
+    \br
+    
+    \mark "3"
+    d'4 ~ s2 d'4
+    \bar "" 
+    <<
+      {
+        \once \override Tie #'control-points = 
+        #'((1.554 . -0.45) (2.866 . 0.7) (7.752 . 0.7) (9.065 . -0.45))
+        d'4*3 ~ \hideNotes d' \unHideNotes
+      }
+      \new Voice { 
+        \once \override Stem #'extra-offset = #'(9.00 . 0)
+        \once \override NoteHead #'extra-offset = #'(9.00 . 0) 
+        d'4
+      }
+    >>
+    \br
+        
+  }
