@@ -1,4 +1,4 @@
-﻿\paper { indent = 0  ragged-right = ##t paper-width = 10 \cm line-width = 9 \cm }
+\paper { indent = 0  ragged-right = ##t paper-width = 10 \cm line-width = 9 \cm }
 
 shapeTie =
   #(define-music-function (parser location offsets) (list?)
