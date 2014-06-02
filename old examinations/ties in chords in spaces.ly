@@ -1,3 +1,5 @@
+\version "2.16.2"
+
 \paper { indent = 0  ragged-right = ##t paper-width = 10 \cm line-width = 9 \cm }
 
 shapeTie =
