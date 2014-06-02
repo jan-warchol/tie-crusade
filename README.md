@@ -50,3 +50,8 @@ What needs to be done:
 All tie cases from real-life examples should be encoded in lilypond form
 
 All tie parameters should be documented
+
+
+Why not bug reports?
+- too much
+- evolves
