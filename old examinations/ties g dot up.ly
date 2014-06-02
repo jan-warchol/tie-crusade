@@ -19,22 +19,6 @@ br = { \bar "" \break }
     d'4.*1/4 ~ d'4
     \br 
     
-    \mark "1/2"
-    d'4.*1/2 ~ d'4
-    \bar ""
-    \shape Tie #'((-0.15 . -0.4)(-0.1 . -0.1)(-0.05 . -0.1)(-0.0 . -0.4))
-    \once \override Dots #'extra-offset = #'(-0.1 . -0.0)
-    d'4.*1/2 ~ d'4
-    \br
-    
-    \mark "3/4"
-    d'4.*3/4 ~ d'4
-    \bar "" 
-    \shape Tie #'((-0.1 . -0.4)(-0.1 . -0.2)(-0.0 . -0.2)(-0.0 . -0.4))
-    \once \override Dots #'extra-offset = #'(-0.0 . -0.0)
-    d'4.*3/4 ~ d'4
-    \br
-    
     \mark "1"
     d'4. ~ d'4
     \bar "" 
@@ -42,37 +26,13 @@ br = { \bar "" \break }
     \once \override Dots #'extra-offset = #'(0.1 . -0.02)
     d'4. ~ d'4
     \br
-    
-    \mark "5/4"
-    d'4. ~ s16 d'4
-    \bar "" 
-    \shape Tie #'((0 . -0.45)(0 . -0.35)(-0.3 . -0.35)(-0.3 . -0.45))
-    \once \override Dots #'extra-offset = #'(0.1 . -0.04)
-    d'4. ~ s16 d'4
-    \br
-    
-    \mark "3/2"
-    d'4. ~ s8 d'4
-    \bar "" 
-    \shape Tie #'((0 . -0.45)(0 . -0.4)(-0.3 . -0.4)(-0.3 . -0.45))
-    \once \override Dots #'extra-offset = #'(0.1 . -0.05)
-    d'4. ~ s8 d'4
-    \br
-        
+     
     \mark "2"
     d'4. ~ s4 d'4
     \bar "" 
     \shape Tie #'((0 . -0.45)(0 . -0.45)(-0.3 . -0.45)(-0.3 . -0.45))
     \once \override Dots #'extra-offset = #'(0.1 . -0.05)
     d'4. ~ s4 d'4
-    \br
-    
-    \mark "3"
-    d'4. ~ s2 d'4
-    \bar "" 
-    \shape Tie #'((-0.75 . 0)(-0.6 . 0)(-0.3 . 0)(-0.3 . 0))
-    \once \override Dots #'extra-offset = #'(0.1 . -0.05)
-    d'4. ~ s2 d'4
     \br
     
     \mark "4"
@@ -83,14 +43,6 @@ br = { \bar "" \break }
     d'4. ~ s2. d'4
     \br
     
-    \mark "6"
-    d'4. ~ s1 s4 d'4
-    \bar "" 
-    \shape Tie #'((-0.75 . 0)(-0.6 . 0.1)(-0.3 . 0.1)(-0.3 . 0))
-    \once \override Dots #'extra-offset = #'(0.2 . -0.05)
-    d'4. ~ s1 s4 d'4
-    \br
-    
     \mark "8"
     d'4. ~ s1.. d'4
     \bar "" 
@@ -99,11 +51,4 @@ br = { \bar "" \break }
     d'4. ~ s1.. d'4
     \br
     
-    \mark "12"
-    d'4. ~ s1 s1 s2. d'4
-    \bar "" 
-    \shape Tie #'((-0.75 . 0)(-0.6 . 0.3)(-0.3 . 0.3)(-0.3 . 0))
-    \once \override Dots #'extra-offset = #'(0.3 . -0.05)
-    d'4. ~ s1 s1 s2. d'4
-    \br
   }

@@ -28,40 +28,6 @@ br = { \bar "" \break }
         d'4
       }
     >>
-    \br 
-    
-    \mark "1/2"
-    d'4*1/2 ~ d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.9 . -2.754) (1.192 . -3.1) (1.917 . -3.1) (2.210 . -2.754))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(2.11 . 0)
-        \once \override NoteHead #'extra-offset = #'(2.11 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "3/4"
-    d'4*3/4 ~ d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((1.05 . -2.691) (1.376 . -3.07) (2.178 . -3.07) (2.503 . -2.691))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(2.51 . 0)
-        \once \override NoteHead #'extra-offset = #'(2.51 . 0) 
-        d'4
-      }
-    >>
     \br
     
     \mark "1"
@@ -76,40 +42,6 @@ br = { \bar "" \break }
       \new Voice { 
         \once \override Stem #'extra-offset = #'(3.00 . 0)
         \once \override NoteHead #'extra-offset = #'(3.00 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "5/4"
-    d'4 ~ s16 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((1.328 . -2.5) (1.828 . -3.02) (3.063 . -3.02) (3.563 . -2.5))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(3.75 . 0)
-        \once \override NoteHead #'extra-offset = #'(3.75 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "3/2"
-    d'4 ~ s8 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((1.328 . -2.5) (1.928 . -3.1) (3.713 . -3.1) (4.313 . -2.5))
-        d'4*2 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(4.5 . 0)
-        \once \override NoteHead #'extra-offset = #'(4.5 . 0) 
         d'4
       }
     >>

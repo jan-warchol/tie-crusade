@@ -24,40 +24,6 @@ br = { \bar "" \break }
         d'4
       }
     >>
-    \br 
-    
-    \mark "1/2"
-    d'4*1/2 ~ d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.938 . -1.22) (1.217 . -1.6) (1.948 . -1.6) (2.247 . -1.22))
-        d'4*1/2 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(2.11 . 0)
-        \once \override NoteHead #'extra-offset = #'(2.11 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "3/4"
-    d'4*3/4 ~ d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.988 . -1.22) (1.336 . -1.65) (2.198 . -1.65) (2.547 . -1.22))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(2.51 . 0)
-        \once \override NoteHead #'extra-offset = #'(2.51 . 0) 
-        d'4
-      }
-    >>
     \br
     
     \mark "1"
@@ -72,40 +38,6 @@ br = { \bar "" \break }
       \new Voice { 
         \once \override Stem #'extra-offset = #'(3.00 . 0)
         \once \override NoteHead #'extra-offset = #'(3.00 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "5/4"
-    d'4 ~ s16 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.988 . -1.22) (1.614 . -1.8) (3.161 . -1.8) (3.787 . -1.22))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(3.75 . 0)
-        \once \override NoteHead #'extra-offset = #'(3.75 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "3/2"
-    d'4 ~ s8 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.988 . -1.22) (1.682 . -1.84) (3.843 . -1.84) (4.537 . -1.22))
-        d'4*3/2 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(4.5 . 0)
-        \once \override NoteHead #'extra-offset = #'(4.5 . 0) 
         d'4
       }
     >>
@@ -190,19 +122,6 @@ br = { \bar "" \break }
         d'4
       }
     >>
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.988 . -1.12) (3.288 . -2) (15.737 . -2) (18.037 . -1.12))
-        d'4*6 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(18.00 . 0)
-        \once \override NoteHead #'extra-offset = #'(18.00 . 0) 
-        d'4
-      }
-    >>
     \br
     
     \mark "8"
@@ -211,13 +130,5 @@ br = { \bar "" \break }
     \shape Tie #'((0.3 . 0.3)(2 . -0.3)(-2.15 . -0.3)(-0.45 . 0.3))
     d'4 ~ s1.. d'4
     \br
-    
-    \mark "12"
-    d'4 ~ s1 s1 s2. d'4
-    \bar "" 
-    \shape Tie #'((0.3 . 0.3)(3 . -0.4)(-3.15 . -0.4)(-0.45 . 0.3))
-    d'4 ~ s1 s1 s2. d'4
-    \br
-        
     
   }

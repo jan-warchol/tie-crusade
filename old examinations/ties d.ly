@@ -24,23 +24,6 @@ br = { \bar "" \break }
         d'4
       }
     >>
-    \br 
-    
-    \mark "1/2"
-    d'4*1/2 ~ d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((0.9 . -3.254) (1.192 . -3.6) (1.917 . -3.6) (2.210 . -3.254))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(2.11 . 0)
-        \once \override NoteHead #'extra-offset = #'(2.11 . 0) 
-        d'4
-      }
-    >>
     \br
     
     \mark "3/4"
@@ -77,40 +60,6 @@ br = { \bar "" \break }
     >>
     \br
     
-    \mark "5/4"
-    d'4 ~ s16 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((1.328 . -3) (1.828 . -3.52) (3.063 . -3.52) (3.563 . -3))
-        d'4 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(3.75 . 0)
-        \once \override NoteHead #'extra-offset = #'(3.75 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
-    \mark "3/2"
-    d'4 ~ s8 d'4
-    \bar "" 
-    <<
-      {
-        \once \override Tie #'control-points = 
-        #'((1.328 . -3) (1.928 . -3.6) (3.713 . -3.6) (4.313 . -3))
-        d'4*2 ~ \hideNotes d' \unHideNotes
-      }
-      \new Voice { 
-        \once \override Stem #'extra-offset = #'(4.5 . 0)
-        \once \override NoteHead #'extra-offset = #'(4.5 . 0) 
-        d'4
-      }
-    >>
-    \br
-    
     \mark "2"
     d'4 ~ s4 d'4
     \bar "" 
@@ -128,25 +77,11 @@ br = { \bar "" \break }
     >>
     \br
     
-    \mark "6"
-    d'4 ~ s1 s4 d'4
-    \bar "" 
-    \shape Tie #'((-0.2 . 0)(0 . -0.2)(-0.2 . -0.2)(0 . 0))
-    d'4 ~ s1 s4 d'4
-    \br
-    
     \mark "8"
     d'4 ~ s1.. d'4
     \bar "" 
-    \shape Tie #'((-0.2 . 0)(0.1 . -0.3)(-0.3 . -0.3)(0 . 0))
+    \shape Tie #'((-0.2 . 0)(1.3 . -0.5)(-1.5 . -0.5)(0 . 0))
     d'4 ~ s1.. d'4
-    \br
-    
-    \mark "12"
-    d'4 ~ s1 s1 s2. d'4
-    \bar "" 
-    \shape Tie #'((-0.2 . 0)(0.2 . -0.4)(-0.4 . -0.4)(0 . 0))
-    d'4 ~ s1 s1 s2. d'4
     \br
     
   }
