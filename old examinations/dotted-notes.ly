@@ -6,12 +6,28 @@ br = { \bar "" \break }
 
 % #(set-global-staff-size 10)
 
-\layout { \context { \Voice \override Tie #'direction = #UP } }
+\layout {
+  indent = 0
+  ragged-right = ##t
+  \set tieWaitForNote = ##t
 
+  % make sure that note spacing won't change (as we rely
+  % on spacer rests, not explicit offsets, to put notes apart)
+  %\override Score.SpacingSpanner #'common-shortest-duration = #(ly:make-moment 1 1)
+
+  % make sure barlines don't interrupt the spacing
+  \time 99/1
+  \context {
+    \Staff
+    \remove Time_signature_engraver
+    \remove Accidental_engraver
+  }
+  \tieUp
+  \stemUp
+}
 \transpose d g
 
-\new Staff \with { \remove Time_signature_engraver } {
-  \time 9999/1 \set tieWaitForNote = ##t
+\new Staff {
   \mark "1/4"
   d'4.*1/4 ~ d'4
   \bar ""
