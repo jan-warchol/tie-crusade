@@ -2,30 +2,6 @@
 
 \paper { indent = 0  ragged-right = ##t paper-width = 10 \cm line-width = 9 \cm }
 
-shapeTie =
-  #(define-music-function (parser location offsets) (list?)
-    #{
-       \once \override Tie #'control-points = #(alter-curve $offsets)
-    #})
-
-#(define ((alter-curve offsets) grob)
-   ;; get default control-points
-   (let ((coords (ly:tie::calc-control-points grob))
-         (n 0))
-     ;; add offsets to default coordinates
-     (define loop (lambda (n)
-                    (set-car! (list-ref coords n)
-                              (+ (list-ref offsets (* 2 n))
-                                 (car (list-ref coords n))))
-                    (set-cdr! (list-ref coords n)
-                              (+ (list-ref offsets (1+ (* 2 n)))
-                                 (cdr (list-ref coords n))))
-                    (if (< n 3)
-                        (loop (1+ n)))))
-     ;; return altered coordinates
-     (loop n)
-     coords))
-
 br = { \bar "" \break }
 
 % #(set-global-staff-size 10)
@@ -280,21 +256,21 @@ br = { \bar "" \break }
     \mark "6"
     d'4 ~ s1 s4 d'4
     \bar "" 
-    \shapeTie #'(0.4 0.25   0.8 -0.1   -0.8 -0.1   -0.65 0.25)
+    \shape Tie #'((0.4 . 0.25)(0.8 . -0.1)(-0.8 . -0.1)(-0.65 . 0.25))
     d'4 ~ s1 s4 d'4
     \br
     
     \mark "8"
     d'4 ~ s1.. d'4
     \bar "" 
-    \shapeTie #'(0.4 0.2   0.8 -0.15   -0.8 -0.2   -0.65 0.25)
+    \shape Tie #'((0.4 . 0.2)(0.8 . -0.15)(-0.8 . -0.2)(-0.65 . 0.25))
     d'4 ~ s1.. d'4
     \br
     
     \mark "12"
     d'4 ~ s1 s1 s2. d'4
     \bar "" 
-    \shapeTie #'(0.4 0.25   0.8 -0.3   -0.8 -0.3   -0.65 0.25)
+    \shape Tie #'((0.4 . 0.25)(0.8 . -0.3)(-0.8 . -0.3)(-0.65 . 0.25))
     d'4 ~ s1 s1 s2. d'4
     \br
   }
