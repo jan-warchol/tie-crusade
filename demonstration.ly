@@ -1,26 +1,4 @@
-\include "gobal-settings.ily"
-
-br = { \bar "" \break }
-
-tconf = #(define-music-function (parser location conf)
-           (list?)
-           #{ \once \override TieColumn #'tie-configuration = #conf #})
-
-\layout {
-  indent = 0
-  ragged-right = ##t
-  \set tieWaitForNote = ##t
-
-  % make sure that note spacing won't change (as we rely
-  % on spacer rests, not explicit offsets, to put notes apart)
-  \override Score.SpacingSpanner #'common-shortest-duration =
-  #(ly:make-moment 1 1)
-
-  % make sure barlines don't interrupt the spacing
-  \time 99/1
-  \context { \Staff \remove Time_signature_engraver }
-}
-
+\include "tests/global-settings.ily"
 
 \markup \justify {
   What's wrong with ties in LilyPond?
@@ -53,7 +31,8 @@ tconf = #(define-music-function (parser location conf)
 
 
 \markup \justify {
-  sometimes they disappear (there should be 6 ties in the first example):
+  sometimes they disappear - there should be 6 ties
+  in the first example, and 2 in the second:
 }
 
 {
@@ -80,7 +59,8 @@ tconf = #(define-music-function (parser location conf)
 }
 
 \markup \justify {
-  ...or point to wrong notes altogether (in the first example, ties should connect e and g):
+  ...or point to wrong notes (in the first example,
+  ties should connect e and g):
 }
 
 {

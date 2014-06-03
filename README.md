@@ -57,14 +57,3 @@ Why not bug reports?
 - evolves
 
 track all possible parameters (from tie details, see Karol's testing files) and locate where in the code they're used.  I suppose that all this happens insidde tie-formatting-problem.cc, but maybe somewhere else.
-
-
-Podział danych:
-- systematic tests (everything that is input into Lily code and can be checked with new code)
-- bad tie examples
-- good tie examples
-- bad&corrected tie pairs
-- cases to chew on/ponder
-
-specification in separate folder
-separate folder for documenting current code
