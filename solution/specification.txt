@@ -40,48 +40,6 @@ at which moment of program execution can we know what is the distance between no
 
 Do we want to get rid of positions (half-staffspaces) and use staffspaces for measurements everywhere?
 
-I think that we should move Tie_engraver from Voice to Staff context.  That would enable cross-voice ties with no additional effort (in contrast to very ugly and laborious hidden-notes approach).  I don't think this would introduce unsolvable problems (we probably should ask big heads like David and Han-Wen).  Currently, there are some problems:
-
-\version "2.17.23"
-\new Staff <<
-  \new Voice{
-    \voiceOne
-    f''8 e'' d'' f'' g''2
-  }
-  \new Voice {
-    \voiceTwo
-    d''2~ d''2
-  }
->>
-\layout {
-  \context {
-    \Voice
-    \remove Tie_engraver
-  }
-  \context {
-    \Staff
-    \consists Tie_engraver
-  }
-}
-
-(the tie connects wrong notes).
-However, this is just a bug - LilyPond should check whether the tied note has already ended before connencting it with another note.
-One thing that we'll have to consider is how to support "tieWaitForNote" when the Tie_engraver will be in the staff context.  For example, how to handle this?
-
-\new Staff \relative c' <<
-  \new Voice {
-    \voiceOne
-    \set tieWaitForNote = ##t
-    f16~ g a~ b c_~ d e f_~ <f, a c f>2
-  }
-  \new Voice {
-    \voiceTwo
-    d4 f8 e c2
-  }
->>
-
-Here's the problem: if the Tie_engraver will be in staff context, f16 would be connected to f8 in another voice, instead of f2.  Probably the solution is to have a "sameVoiceOnly" property of the tie, which forces LilyPond to use such ties only to connect notes in the same Voice.
-
 
 
 introduction: tie-configuration
@@ -161,10 +119,6 @@ but we will always choose one.
 Afterthought: i'm not so sure now.  After all, we may want to alter the shape so that the tips will point more in the direction of notehead center, but on the other hand this might have a negligible effect.  ANYWAY, we need a parameter that would affect this, so that users can choose a different "style"
 
 if there's a note second apart in the other voice, try to ignore default tie direction and set it in another (if there's no second on that side) todo: add/find example
-
-One idea about tieWaitForNote: maybe it could be on by default when the next column after the tied note contains only spacers?  So that c~ s c would be tied by default.
-
-Another idea about tieWaitForNote: when a tie (tilde) is attached to a note and not a chord (i.e. <c~ d~>, not <c d>~), it should always wait?  A chord shouldn't wait, because { <c e>~ c } would produce a waiting tie, which is generally unwanted.
 
 Keep in mind: we want to be able to access control points of all ties in a chord - currently this isn't quite possible, which makes \shape less useful.
 

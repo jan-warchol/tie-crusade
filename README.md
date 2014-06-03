@@ -35,7 +35,8 @@ Zobacz, jak zamierzam podejść do rozwiązania czytając "specification.txt"
 Wyjaśnienie techniczne: kształt łuku przedłużającego w LilyPondzie znacząco
 zależy od odległości między połączonymi nutami.  Dlatego często jeśli wyizoluje
 się fragment kodu ze źle wyglądającym łukiem, to skompilowany osobno będzie
-wyglądał zupełnie inaczej - popatrz np. na "real-life examples/bad ties/bad-tie-4.png": jeśli skompilujesz samo { a'~( a'8 g'16) } to dostaniesz zupełnie dobry łuk.
+wyglądał zupełnie inaczej - popatrz np. na "real-life examples/bad ties/bad-tie-4.png":
+jeśli skompilujesz samo { a'~( a'8 g'16) } to dostaniesz zupełnie dobry łuk.
 Nie byłoby sensu kopiować dużego fragmentu nut tylko po to, żeby odtworzyć
 kontekst prowadzący do źle wyglądającego łuku.  Dlatego używamy "pustych pauz",
 które pozwalają symulować różne odległości między łączonymi nutami (parametr
@@ -57,3 +58,19 @@ Why not bug reports?
 - evolves
 
 track all possible parameters (from tie details, see Karol's testing files) and locate where in the code they're used.  I suppose that all this happens insidde tie-formatting-problem.cc, but maybe somewhere else.
+
+
+Description of the subdirs:
+- real-life examples: only images go here - screenshots or scans of scores from any sources (Lilypond, hand-engraved, other software if applicable)
+- current vs suggested shapes - here you can learn how the ties should look like.  There are both systematic examinations and real-life cases here.
+- tests - meant for checking how lilypond handles various cases.
+- solution - notes on how the problem should be solved.
+
+Possible categorization:
+- single notes
+- chords
+- suspended noteheads
+- polyphony
+- dotted notes
+- dotted chords
+- ties avoiding accidentals/ ties moving too far vertically
