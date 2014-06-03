@@ -1,6 +1,13 @@
 \version "2.16.2"
 
-\include "common-code.ily"
+\include "../tests/global-settings.ily"
+
+\markup { LEFT: current output, RIGHT: suggested output }
+
+\layout {
+  % turn off the global setting
+  \revert Score.SpacingSpanner #'common-shortest-duration
+}
 
 \new Staff {
   \override Staff.Stem #'direction = #UP

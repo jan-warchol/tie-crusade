@@ -1,13 +1,8 @@
 \version "2.16.2"
 
-\include "common-code.ily"
+\include "../tests/global-settings.ily"
 
-\layout {
-  % make sure that note spacing won't change (as we rely
-  % on spacer rests, not explicit offsets, to put notes apart)
-  \override Score.SpacingSpanner #'common-shortest-duration =
-  #(ly:make-moment 1 1)
-}
+\markup { LEFT: current output, RIGHT: suggested output }
 
 \markup \huge "bad-tie-68"
 
