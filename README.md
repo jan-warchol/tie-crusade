@@ -74,3 +74,4 @@ Possible categorization:
 - dotted notes
 - dotted chords
 - ties avoiding accidentals/ ties moving too far vertically
+- flags?
