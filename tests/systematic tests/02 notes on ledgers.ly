@@ -17,13 +17,15 @@ pattern = #(define-music-function
                 \stemUp
                 \tieDown
                 #samp        q4 s4*2
+                % this one is redundant,
+                % but I want the whole example to align with the next one
                 \hideNotes \override Tie #'transparent = ##t
-                #samp s8     q4 s4*2     %(redundant)
+                #samp s8     q4 s4*2
                 \unHideNotes \revert Tie #'transparent
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})
@@ -50,9 +52,9 @@ pattern = #(define-music-function
                 #samp        q4 s4*2
                 #samp s8     q4 s4*2  % not redundant!!
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})
@@ -77,9 +79,9 @@ pattern = #(define-music-function
                 #samp        q4 s4*2
                 #samp s8     q4 s4*2
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})
@@ -104,9 +106,9 @@ pattern = #(define-music-function
                 #samp        q4 s4*2
                 #samp s8     q4 s4*2
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})

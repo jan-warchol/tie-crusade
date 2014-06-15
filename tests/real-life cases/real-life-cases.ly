@@ -10,7 +10,7 @@
     { c''1 ~        s4*16  c''2 } \\
     { <e' g'~ e''>1 s4*16  <d' g' d''>1 }
   >>
-  s4*4 \bar "|"
+  \br
   % the tie in the upper voice actually shouldn't be up,
   % so let's set it's direction manually.
   % unfortunately the effect is still wrong.

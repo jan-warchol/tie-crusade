@@ -14,26 +14,26 @@ pattern = #(define-music-function
                 \stemUp
                 \tieDown
                 #samp        q4 s4*2
-                % redundant #samp s8     q4 s4*2
+                %#samp s8     q4 s4*2
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})
 
-% redundant (e') \pattern <c'>4~
+% redundant (same as e'): \pattern <c'>4~
 \pattern <d'>4~
 \pattern <e'>4~
 \pattern <f'>4~
 \pattern <g'>4~
 \pattern <a'>4~
 \pattern <b'>4~
-% redundant (a') \pattern <c''>4~
-% redundant (b') \pattern <d''>4~
-% redundant (a') \pattern <e''>4~
-% redundant (b') \pattern <f''>4~
+% redundant (same as a'): \pattern <c''>4~
+% redundant (same as b'): \pattern <d''>4~
+% redundant (same as a'): \pattern <e''>4~
+% redundant (same as b'): \pattern <f''>4~
 \pattern <g''>4~
 \pattern <a''>4~
 
@@ -50,26 +50,26 @@ pattern = #(define-music-function
                 \stemDown
                 \tieDown
                 #samp        q4 s4*2
-                % redundant #samp s8     q4 s4*2
+                %#samp s8     q4 s4*2
                 #samp s4     q4 s4*2
-                % redundant #samp s4*2   q4 s4*2
+                %#samp s4*2   q4 s4*2
                 #samp s4*4   q4 s4*2
-                % redundant #samp s4*8   q4 s4*2
+                %#samp s4*8   q4 s4*2
                 #samp s4*16  q4 s4*2
               }
             #})
 
-% redundant (e') \pattern <c'>4~
+% redundant (same as e'): \pattern <c'>4~
 \pattern <d'>4~
 \pattern <e'>4~
 \pattern <f'>4~
 \pattern <g'>4~
 \pattern <a'>4~
 \pattern <b'>4~
-% redundant (a') \pattern <c''>4~
-% redundant (b') \pattern <d''>4~
-% redundant (a') \pattern <e''>4~
-% redundant (b') \pattern <f''>4~
+% redundant (same as a'): \pattern <c''>4~
+% redundant (same as b'): \pattern <d''>4~
+% redundant (same as a'): \pattern <e''>4~
+% redundant (same as b'): \pattern <f''>4~
 \pattern <g''>4~
 \pattern <a''>4~
 
