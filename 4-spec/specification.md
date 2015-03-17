@@ -1,15 +1,15 @@
 
-the problem:
-------------
+The problem
+-----------
 
 There are two main aspects of tie formatting that we need to get right:
 
-1) unambiguity - it must be obvious what the tie is connecting.  
+1. unambiguity - it must be obvious what the tie is connecting:
    - ends of the tie should point into connected noteheads,
    - ends of the tie should be positioned vertically close to the noteheads,
    - the tie should be visually different from a slur.
 
-2) elegance - the tie should look good, which means that:
+2. elegance - the tie should look good, which means that:
    - it should be long enough to be visible (especially at small staffsizes),
    - height and curvature should be neither too big nor too small,
    - tips should avoid the staffline,
@@ -23,18 +23,19 @@ There are two main aspects of tie formatting that we need to get right:
       * other noteheads
    - distance between tie tips and the notehead/dot/accidental should be consistent,
    - ties connecting notes placed on different staffline positions should be
-     reasonably similar (see 1st and 2nd example from demonstration),
+     reasonably similar (see 1st and 2nd example from `overview.ly`),
    - ties connecting the same pitches spaced differently should be visually
-     compatible (see 3rd, 4th and 5th example from demonstration),
+     compatible (see 3rd, 4th and 5th example from `overview.ly`),
    - the tie should interact smartly with accidentals, in particular
      reminder accidentals after a line break.  They should be avoided
      when that's reasonable, but sometimes the tie has to cross them
      intelligently.  The same goes for flags.
    - ties should work well with other notehead shapes, in particular breves.
 
-﻿
-important questions:
---------------------
+
+
+important questions
+-------------------
 
 at which moment of program execution can we know what is the distance between noteheads? This is very important information and we would like to know this right from the very beginning of tie calculations.  It surely is possible to acess this information before making final decisions (we can see that long ties are formatted differently than short ones already), but can we have this info when we start calculations or do we have to make some initial decisions and guesses first?
 
@@ -45,20 +46,22 @@ Do we want to get rid of positions (half-staffspaces) and use staffspaces for me
 introduction: tie-configuration
 -------------------------------
 
-Currently there are 3 major ways of tweaking tie formatting.  The easiest and most basic method is changing tie direction, either using an \override or direction indicators (like this { c''_~ c'' } ) - this is usually not a solution for fixing ugly ties.  The most complicated and powerful method is to use \shape function provided by David Nalesnik - it allows you to change bezier control points in any way you want, thus allowing to achieve any tie shape.  The downside is that it's quite laborious.
+Currently there are 3 major ways of tweaking tie formatting.  The easiest and most basic method is changing tie direction, either using an \override or direction indicators (like this `{ c''_~ c'' }` ) - this is usually not a solution for fixing ugly ties.  The most complicated and powerful method is to use `\shape` function provided by David Nalesnik - it allows you to change bezier control points in any way you want, thus allowing to achieve any tie shape.  The downside is that it's quite laborious.
 
 The third way is by overriding tie-configuration property of TieColumn, like this:
-{
-  \set tieWaitForNote = ##t
-  <g' d''> ~
-  \override TieColumn #'tie-configuration =
-  #'((-2.3 . -1)(2.3 . 1))
-  s2 q
-}
+
+    {
+      \set tieWaitForNote = ##t
+      <g' d''> ~
+      \override TieColumn #'tie-configuration =
+      #'((-2.3 . -1)(2.3 . 1))
+      s2 q
+    }
+
 Here, each pair corresponds to one tie.  First number is the vertical posistion of tie ends, relative to the middle staffline, measured in half-staffspaces; second number is the tie direction.  LilyPond chooses the exact horizontal placement of the ends, as well as the height of the tie, by herself.
 
-I think that using \shape is an overkill - one usually doesn't want to tweak the tie that much.  After all, the tie generally stays horizontal (i.e. both ends on the same vertical position), and the height is closely related to the length.
-On the other hand, tie-configuration has its own deficiencies: firstly, specifying direction this way is inconvenient - i find direction indicatiors _ ^ much better suited for this task, for instance they result in less typing (without having to specify direction in tie-configuration one wouldn't have to write additional parentheses and a dot necessary for creating a scheme pair - so the override could be shortened to \override TieColumn #'tie-configuration = #'(-2.3 2.3) ).
+I think that using `\shape` is an overkill - one usually doesn't want to tweak the tie that much.  After all, the tie generally stays horizontal (i.e. both ends on the same vertical position), and the height is closely related to the length.
+On the other hand, tie-configuration has its own deficiencies: firstly, specifying direction this way is inconvenient - i find direction indicatiors _ ^ much better suited for this task, for instance they result in less typing (without having to specify direction in tie-configuration one wouldn't have to write additional parentheses and a dot necessary for creating a scheme pair - so the override could be shortened to `\override TieColumn #'tie-configuration = #'(-2.3 2.3)`).
 Secondly, tie-configuration offers no easy way to override tie height, which is sometimes needed.
 Finally, i fint it very inconvenient to have to specify the vertical position of the ends in half-staffspaces relative to the middle staffline.
 
@@ -68,13 +71,13 @@ Notice that specifying Y-coordinates relative to the notehead Y-position will be
 
 Actually, we could use this "setup" to control tie direction as well.  For example, positive tie height would mean an upward tie, and negative height - downward tie.
 
-A more sophisticated (and more powerful) approach to specyfying height&direction would be to take default tie direction into account.  For example, in { a'~ a' } the default tie direction is downwards, and therefore specifying positive height would mean a downward tie, while negative height would mean an upward tie (opposite to default direction).  Conversely, in { \voiceOne a'~ a' } the default tie direction is up, so a positive height would mean an upward tie.  This would be more "transposition-proof", as the tweaks would continue to make sense even when the music is transposed or put into polyphonic voices.
+A more sophisticated (and more powerful) approach to specyfying height&direction would be to take default tie direction into account.  For example, in `{ a'~ a' }` the default tie direction is downwards, and therefore specifying positive height would mean a downward tie, while negative height would mean an upward tie (opposite to default direction).  Conversely, in `{ \voiceOne a'~ a' }` the default tie direction is up, so a positive height would mean an upward tie.  This would be more "transposition-proof", as the tweaks would continue to make sense even when the music is transposed or put into polyphonic voices.
 
 I think that we should start changing the code (after we read and understand it) by implementing a mechanism that would just typeset tie when the user specifies this "tie-configuration".  The most important part of this task is probaby choosing the right horizontal coordinates for the tie end.  The next step would be having LilyPond find optimum tie-configuration values.
 
 
-misc thoughts:
---------------
+misc thoughts
+-------------
 
 the vertical "distance" between the tips of a tie and the notehead should depend directly on the vertical distance to the closest notehead (and whether that notehead is in the same voice or not);
 basically when the distance is more than a fifth, the tie would be typeset as if it was a standalone tie (i.e. a tie connecting single notes, by which i mean notes that aren't inside a chord or a polyphony).
@@ -84,9 +87,9 @@ Because the tie has to avoid stafflines (and other stuff), the answer to the ver
 There are just two main factors that we need to take into account when calculating possible tie shapes:
  - vertical position ot the tie tip relative to the notehead
  - height of the tie.
-Length is more or less determined by the distance between noteheads, surrounding objects (flags, accidentals, augmentation dots, stems in cross-voices, ledger lines).  We would generally calculate a "path" of acceptable tip positions, which would lay in a certain disntance from all these objects, and it will determine the horizontal position.  Of course, we will have to consider special cases like "should the tie start before augmentation dot or after it", but that doesn't give us swarms of new combinations.  The only problem i can see is that depending on whether the tie would begin before or after the dot, the dot's position would change - similarly with flags (a shorter variant of the flag may be used if necessary) etc.
+Length is more or less determined by the distance between noteheads, surrounding objects (flags, accidentals, augmentation dots, stems in cross-voices, ledger lines).  We would generally calculate a "path" of acceptable tip positions, which would lay in a certain distance from all these objects, and it will determine the horizontal position.  Of course, we will have to consider special cases like "should the tie start before augmentation dot or after it", but that doesn't give us swarms of new combinations.  The only problem i can see is that depending on whether the tie would begin before or after the dot, the dot's position would change - similarly with flags (a shorter variant of the flag may be used if necessary) etc.
 
-The x-coordinates in the path of possible tip positions shouldn't be calculated simply as positions in which the distance between the points and the edge of the object (usually notehead) - doing so would result in the x-coordinate of the right tip to be too far right in this case: { a''2~ a'' } .  The x-coordinate should be calculated as a compromise between distance to the object and the angle between the calculated point and the center of the notehead.
+The x-coordinates in the path of possible tip positions shouldn't be calculated simply as positions in which the distance between the points and the edge of the object (usually notehead) - doing so would result in the x-coordinate of the right tip to be too far right in this case: `{ a''2~ a'' }` .  The x-coordinate should be calculated as a compromise between distance to the object and the angle between the calculated point and the center of the notehead.
 
 So, the algorithm would probably be as follows:
  - look for the neighboring noteheads and determine the range of acceptable vertical positions of the tips,
@@ -102,19 +105,19 @@ When looking for the best tie, we can probably restrict considered heights based
 
 In some cases it will be inevitable that tie belly will lie on top of the staffline.  I think that the penalty for this should depend on the tie/staffline thickness ratio (thick tie gets lower penalty because it remains legible)
 
-What about the minimum length of a tie, and minimum distance between notecolumns connected by ties?  One thing is certain: ties need minimum length.  However, spacing the notecolumns is trickier - sometimes they could even touch each other (for example in case of { a' ~ a' } the tie can be moved below the notes), but sometimes there has to be some space between them (for example here: { <f' a' c'' e''> ~ q }).  I think that we should have a minimum-distance-between-tied-notecolumns property, independent from minumum-tie-length.  It's default value would be a function of notes in the notecolumn: if the tied note is alone, notecolumns can do whatever they want.  If there are more noteheads (there's a chord, or there are some other voices), a minimum distance is set.  Of course, there is still possibility that a single-voice tie will not have enough space to be moved below or above the noteheads becauss of other stuff (for example flags or dots), but i guess we have to live with that.
+What about the minimum length of a tie, and minimum distance between notecolumns connected by ties?  One thing is certain: ties need minimum length.  However, spacing the notecolumns is trickier - sometimes they could even touch each other (for example in case of `{ a' ~ a' }` the tie can be moved below the notes), but sometimes there has to be some space between them (for example here: `{ <f' a' c'' e''> ~ q }`).  I think that we should have a minimum-distance-between-tied-notecolumns property, independent from minumum-tie-length.  It's default value would be a function of notes in the notecolumn: if the tied note is alone, notecolumns can do whatever they want.  If there are more noteheads (there's a chord, or there are some other voices), a minimum distance is set.  Of course, there is still possibility that a single-voice tie will not have enough space to be moved below or above the noteheads becauss of other stuff (for example flags or dots), but i guess we have to live with that.
 
 we can assume that the exact shape of the tie is determined by its height and length.  in other words, for an ASCII-art tie of height 2 and length 9 there could be many different shapes:
 
-\       /
- \_____/
+    |       |
+     \_____/
 
-\       /
- '-._.-'
- 
-'.     .'
-  '-.-'
-  
+    \       /
+     '-._.-'
+    
+    '.     .'
+      '-.-'
+
 but we will always choose one.
 Afterthought: i'm not so sure now.  After all, we may want to alter the shape so that the tips will point more in the direction of notehead center, but on the other hand this might have a negligible effect.  ANYWAY, we need a parameter that would affect this, so that users can choose a different "style"
 
@@ -124,8 +127,8 @@ Keep in mind: we want to be able to access control points of all ties in a chord
 
 
 
-so, here are some values:
-------------------------
+some parameter values
+---------------------
 
 minimum length:
 max (0.7 mm, 0.6 ss)
