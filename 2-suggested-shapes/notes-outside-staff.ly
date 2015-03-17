@@ -1,6 +1,6 @@
 \version "2.16.2"
 
-\include "../tests/global-settings.ily"
+\include "../3-tests/global-settings.ily"
 
 \markup { LEFT: current output, RIGHT: suggested output }
 

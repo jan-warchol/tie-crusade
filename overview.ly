@@ -1,4 +1,4 @@
-\include "tests/global-settings.ily"
+\include "3-tests/global-settings.ily"
 
 \markup \justify {
   What's wrong with ties in LilyPond?
