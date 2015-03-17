@@ -1,19 +1,44 @@
+LilyPond's tie formatting code needs serious improvements.  This repo contains
+my research on this subject; I didn't put it in the issue tracker simply because
+there's too much stuff here and it's expanded over time.
 
-ENGLISH
-=======
+Start by compiling [`overview.ly`](overview.ly) to get a visual summary of tie problems.
 
-LilyPond's tie formatting code needs serious improvements.  This folder
-contains my notes and research that i've collected over many months of thinking.
-Firstly, look at LilyPond's current problems in `demonstration.ly`.
-Skim through `real-life examples` to get a better idea of the situation.
-You may take a look at `current vs suggested shapes` to see a few suggested tie shapes.
-I've written down some thoughts on the correct way of formatting ties in `solution/`.
 
-Technical explanation: tie shape in LilyPond depends heavily on the distance
-between tied notes.  Because of that, if you extract a piece of input leading to
-a bad tie, it may look completely different when compiled separately - take a
-look at "real-life examples/bad ties/bad-tie-4.png": if you compile just
-{ a'~( a g'16) } the tie will look correctly.
+
+Table of contents
+-----------------
+
+(and suggested reading order)
+
+1. [`1-examples`](1-examples) - screenshots from real-life scores showing problematic
+ties, interesting cases that should be considered, and hand-engraved examples.
+
+2. [`2-suggested-shapes`](2-suggested-shapes) - manually tweaked examples showing how
+some ties should look in my personal opinion.
+
+3. [`3-tests`](3-tests) - LilyPond code snippets for testing.
+
+4. [`4-spec`](4-spec) - thoughts on how the ties should be formatted and a spec draft.
+
+[`ties - current function calls graph.odg`](ties - current function calls graph.odg)
+is a manually created drawing in Open/LibreOffice format that may be helpful in
+understanding how the current LilyPond tie code works.
+
+
+
+A note about spacing
+--------------------
+
+Tie shape calculated by LilyPond depends heavily on the distance between tied notes.
+If you have a score with an ugly tie and try to extract the input corresponding to
+the tie, it may look completely different when compiled separately.  For example,
+take a look at `1-examples/bad-ties/single-notes/bad-tie-4.png`:
+
+![/1-examples/bad-ties/single-notes/bad-tie-4.png](/1-examples/bad-ties/single-notes/bad-tie-4.png)
+
+If you compile just `{ a'~( a g'16) }` the tie will look correctly.
+
 It wouldn't make sense to copy a long piece of input just to recreate the
 context leading to a bad-looking tie.  That's why in the testing files we use
 spacer rests, which allow us to simulate different distances between tied notes
@@ -23,33 +48,11 @@ spaced notes.
 
 
 
-What needs to be done:
-======================
+TODOs
+-----
 
-All tie cases from real-life examples should be encoded in lilypond form
-
-All tie parameters should be documented
-
-
-Why not bug reports?
-- too much
-- evolves
-
-track all possible parameters (from tie details, see Karol's testing files) and locate where in the code they're used.  I suppose that all this happens insidde tie-formatting-problem.cc, but maybe somewhere else.
-
-
-Description of the subdirs:
-- real-life examples: only images go here - screenshots or scans of scores from any sources (Lilypond, hand-engraved, other software if applicable)
-- current vs suggested shapes - here you can learn how the ties should look like.  There are both systematic examinations and real-life cases here.
-- tests - meant for checking how lilypond handles various cases.
-- solution - notes on how the problem should be solved.
-
-Possible categorization:
-- single notes
-- chords
-- suspended noteheads
-- polyphony
-- dotted notes
-- dotted chords
-- ties avoiding accidentals/ ties moving too far vertically
-- flags?
+There are a lot of parameters controlling tie formatting (see
+["Tie" in LilyPond Internals Reference](http://lilypond.org/doc/v2.19/Documentation/internals/tie)
+).  Unfortunately they aren't well documented.  It would be good to have a guide
+demonstrating how they influence tie shape.  See also Karol Majewski's
+[testing files](/3-tests/Karol/tie-karol.ly).
