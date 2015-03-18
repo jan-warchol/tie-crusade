@@ -43,6 +43,45 @@ Do we want to get rid of positions (half-staffspaces) and use staffspaces for me
 
 
 
+answers to the questions
+------------------------
+
+What do we need to know before calculating ties:
+- horizontal distance between connected noteheads
+- notehead vertical position (where are the stafflines)
+- notehead horizontal position (which notes are suspended)
+- stem direction
+- augmentation dots
+- visible accidentals in whole notecolumn
+- arpeggios and similar stuff before notecolumn
+- line breaking
+- other noteheads in the column
+- other note columns, tie signatures and other elements between connected notes
+- whether there are any cross-voice stems and so on
+- flag positions?
+- ledger lines (which may be caused by other notes than the tied ones)
+- beams?
+
+What must be calculated after ties:
+- flags?
+- accidentals?
+- beams?  They need at least a good approximation, including tie direction
+- 
+- 
+
+What just needs to know that the ties exist, but doesn't have to know their exact shape
+
+
+Control flow
+------------
+
+1. When calculating note spacing, we check for specific conditions that make it necessary to insert the tie strictly between noteheads (e.g. tied chord), and in that case we set some minimum distance between note columns.  This is the only situation when ties affect note spacing.
+
+2. Calculate some tie directions.  We cannot determine directions of all ties (for example middle ties in a chord may depend on many different factors), but for some ties we can pin down their direction.
+
+3. 
+
+
 introduction: tie-configuration
 -------------------------------
 
