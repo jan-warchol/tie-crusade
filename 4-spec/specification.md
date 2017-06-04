@@ -60,12 +60,11 @@ What do we need to know before calculating ties:
 - whether there are any cross-voice stems and so on
 - flag positions?
 - ledger lines (which may be caused by other notes than the tied ones)
-- beams?
 
 What must be calculated after ties:
 - flags?
 - accidentals?
-- beams?  They need at least a good approximation, including tie direction
+- beams; They need at least a good approximation, including tie direction
 - 
 - 
 
@@ -79,7 +78,16 @@ Control flow
 
 2. Calculate some tie directions.  We cannot determine directions of all ties (for example middle ties in a chord may depend on many different factors), but for some ties we can pin down their direction.
 
-3. 
+3. calculate all elements needed for tie formatting
+
+4. tie formatting
+
+   - calculate remaining directions
+   - based on notehead positions and distance between noteheads, calculate tips vertical positioning
+   - calculate tips horizontal positions
+   - calculate height so that the tie will have a nice curve and won't collide with the stafflines
+
+
 
 
 introduction: tie-configuration
